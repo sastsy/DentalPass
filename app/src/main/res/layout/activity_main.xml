@@ -292,11 +292,9 @@
 
         <ImageButton
             android:id="@+id/imageButton22"
-            android:layout_width="45dp"
-            android:layout_height="42dp"
+            android:layout_width="43dp"
+            android:layout_height="38dp"
             android:layout_marginTop="375dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginRight="1dp"
             android:background="@null"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/imageButton21"
@@ -348,8 +346,6 @@
             android:layout_width="36dp"
             android:layout_height="35dp"
             android:layout_marginTop="445dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginRight="3dp"
             android:background="@null"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/imageButton22"
@@ -360,11 +356,11 @@
             android:id="@+id/imageButton26"
             android:layout_width="36dp"
             android:layout_height="35dp"
-            android:layout_marginTop="425dp"
+            android:layout_marginTop="445dp"
             android:background="@null"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/imageButton25"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton6"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton7"
             app:srcCompat="@drawable/white26" />
 
         <ImageButton
@@ -386,26 +382,24 @@
             android:id="@+id/imageButton24"
             android:layout_width="37dp"
             android:layout_height="32dp"
-            android:layout_marginTop="472dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginRight="6dp"
+            android:layout_marginTop="470dp"
             android:background="@null"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/imageButton23"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton8"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton9"
             app:srcCompat="@drawable/white24" />
 
         <ImageButton
             android:id="@+id/imageButton25"
             android:layout_width="37dp"
             android:layout_height="32dp"
-            android:layout_marginTop="454dp"
+            android:layout_marginTop="470dp"
             android:layout_marginEnd="2dp"
             android:layout_marginRight="2dp"
             android:background="@null"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/imageButton24"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton7"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton8"
             app:srcCompat="@drawable/white25" />
 
         <ImageButton
