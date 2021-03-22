@@ -1,4 +1,4 @@
-package com.example.dentalpass;
+package sastsy.project.dentalpass;
 
 import org.junit.Test;
 
