@@ -2,8 +2,10 @@ package sastsy.project.dentalpass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -53,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+        Button tooth_specialities_btn = findViewById(R.id.button9);
+        tooth_specialities_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ChangeActivity.class);
+                intent.putExtra("tooth", tooth_list[clicked_tooth[0]]);
+                startActivity(intent);
+            }
+        });
+
         for (int i = 0; i <= 31; ++i) {
             imageButtons_list[i] = findViewById(imageButtons_id[i]);
             tooth_list[i] = new Tooth(i + 1);
@@ -64,8 +76,11 @@ public class MainActivity extends AppCompatActivity {
                     clicked_tooth[0] = finalI;
                     imageButtons_list[finalI].setImageResource(redImages_id[finalI]);
                     textView.setText(tooth_list[finalI].name);
+                    tooth_specialities_btn.setVisibility(View.VISIBLE);
+
                 }
             });
         }
     }
+
 }

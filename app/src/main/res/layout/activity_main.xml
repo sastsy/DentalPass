@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#363BFFE8"
         tools:context="sastsy.project.dentalpass.MainActivity">
 
         <ImageButton
@@ -420,7 +421,10 @@
             android:layout_width="136dp"
             android:layout_height="53dp"
             android:layout_marginBottom="176dp"
-            android:text="Button"
+            android:fontFamily="serif"
+            android:text="Изменить"
+            app:backgroundTint="#F44336"
+            app:cornerRadius="50dp"
             app:layout_constraintBottom_toTopOf="@+id/imageButton24"
             app:layout_constraintEnd_toStartOf="@+id/imageButton18"
             app:layout_constraintHorizontal_bias="0.503"
@@ -431,7 +435,10 @@
             android:layout_width="136dp"
             android:layout_height="53dp"
             android:layout_marginBottom="108dp"
-            android:text="Button"
+            android:fontFamily="serif"
+            android:text="Детали"
+            app:backgroundTint="#3F51B5"
+            app:cornerRadius="50dp"
             app:layout_constraintBottom_toTopOf="@+id/imageButton24"
             app:layout_constraintEnd_toStartOf="@+id/imageButton18"
             app:layout_constraintHorizontal_bias="0.503"
@@ -439,13 +446,75 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="100dp"
-            android:text=""
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="Выберите зуб!"
+            android:textColor="#F44336"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/button4"
             app:layout_constraintEnd_toStartOf="@+id/imageButton14"
             app:layout_constraintStart_toEndOf="@+id/imageButton3" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginRight="100dp"
+            android:fontFamily="serif"
+            android:text="Статистика"
+            app:backgroundTint="#3F51B5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:fontFamily="serif"
+            android:text="ОТБЕЛИВАНИЕ"
+            app:backgroundTint="#3F51B5"
+            app:cornerRadius="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton24" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="0dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:fontFamily="serif"
+            android:text="ОСОБЕННОСТИ"
+            android:textSize="12sp"
+            app:backgroundTint="#BAF44336"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton16"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageButton1"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:visibility="gone"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
