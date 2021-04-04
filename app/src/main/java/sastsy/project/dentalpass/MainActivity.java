@@ -11,7 +11,14 @@ import android.widget.TextView;
 
 import com.example.dentalpass.R;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
+
+    private static  final int REQUEST_ACCESS_TYPE = 1;
+    int clicked_tooth = 0;
+    Tooth[] tooth_list = new Tooth[32];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageButton[] imageButtons_list = new ImageButton[32];
-        final int[] clicked_tooth = {0};
-        Tooth[] tooth_list = new Tooth[32];
 
         int[] imageButtons_id = {R.id.imageButton1, R.id.imageButton2, R.id.imageButton3, R.id.imageButton4,
                 R.id.imageButton5, R.id.imageButton6, R.id.imageButton7, R.id.imageButton8, R.id.imageButton9,
@@ -47,40 +52,35 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.white30, R.drawable.white31, R.drawable.white32};
 
         TextView textView = findViewById(R.id.textView);
-        /*Button backgroundButton = findViewById(R.id.backgroundButton);
-        backgroundButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imageButtons_list[clicked_tooth[0]].setImageResource(whiteImages_id[clicked_tooth[0]]);
-            }
-        });*/
 
         Button tooth_specialities_btn = findViewById(R.id.button9);
-        tooth_specialities_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ChangeActivity.class);
-                intent.putExtra("tooth", tooth_list[clicked_tooth[0]]);
-                startActivity(intent);
-            }
+        tooth_specialities_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ChangeActivity.class);
+            startActivityForResult(intent, REQUEST_ACCESS_TYPE);
         });
 
         for (int i = 0; i <= 31; ++i) {
             imageButtons_list[i] = findViewById(imageButtons_id[i]);
             tooth_list[i] = new Tooth(i + 1);
             int finalI = i;
-            imageButtons_list[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    imageButtons_list[clicked_tooth[0]].setImageResource(whiteImages_id[clicked_tooth[0]]);
-                    clicked_tooth[0] = finalI;
-                    imageButtons_list[finalI].setImageResource(redImages_id[finalI]);
-                    textView.setText(tooth_list[finalI].name);
-                    tooth_specialities_btn.setVisibility(View.VISIBLE);
-
-                }
+            imageButtons_list[i].setOnClickListener(v -> {
+                imageButtons_list[clicked_tooth].setImageResource(whiteImages_id[clicked_tooth]);
+                clicked_tooth = finalI;
+                imageButtons_list[finalI].setImageResource(redImages_id[finalI]);
+                textView.setText(tooth_list[finalI].name);
+                tooth_specialities_btn.setVisibility(View.VISIBLE);
             });
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+            TextView textView = findViewById(R.id.textView);
+            boolean[] state_list = data.getBooleanArrayExtra("state_list");
+            tooth_list[clicked_tooth].state = state_list;
+            textView.setText(Arrays.toString(tooth_list[clicked_tooth].state));
+    }
+
 }
+
