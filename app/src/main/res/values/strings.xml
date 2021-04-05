@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">DentalPass</string>
+    <string-array name="tooth_state">
+        <item>Кариес</item>
+        <item>Пломба</item>
+        <item>Коронка</item>
+        <item>Зуб удален</item>
+        <item>Нерв удален</item>
+        <item>Имплант</item>
+        <item>Отбеливание</item>
+        <item>Виниры</item>
+        <item>Брекеты</item>
+    </string-array>
 </resources>

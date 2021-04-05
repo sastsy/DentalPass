@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Tooth {
 
     public String name;
-    public boolean[] state;
+    public ArrayList<Integer> state;
     public int number;
 
     String[] name_list = {"Третий моляр (зуб мудрости)", "Второй моляр", "Первый моляр", "Второй премоляр",
@@ -22,6 +22,6 @@ public class Tooth {
             else this.name = name_list[8 * (number / 8 + 1) - number];
         }
         this.number = number;
-        this.state = new boolean[9];
+        this.state = new ArrayList<>();
     }
 }

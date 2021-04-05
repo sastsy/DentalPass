@@ -1,7 +1,9 @@
 package sastsy.project.dentalpass;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,16 +19,20 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     private static  final int REQUEST_ACCESS_TYPE = 1;
-    int clicked_tooth = 0;
-    Tooth[] tooth_list = new Tooth[32];
+    private int clicked_tooth = 0;
+    private Tooth[] tooth_list = new Tooth[32];
+    private ImageButton[] imageButtons_list = new ImageButton[32];
+    private String[] tooth_state_list;
+    private boolean[] checked_state;
+    private ArrayList<Integer> copylist_of_state = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton[] imageButtons_list = new ImageButton[32];
-
+        tooth_state_list = getResources().getStringArray(R.array.tooth_state);
+        checked_state = new boolean[tooth_state_list.length];
         int[] imageButtons_id = {R.id.imageButton1, R.id.imageButton2, R.id.imageButton3, R.id.imageButton4,
                 R.id.imageButton5, R.id.imageButton6, R.id.imageButton7, R.id.imageButton8, R.id.imageButton9,
                 R.id.imageButton10, R.id.imageButton11, R.id.imageButton12, R.id.imageButton13, R.id.imageButton14,
@@ -52,12 +58,36 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.white30, R.drawable.white31, R.drawable.white32};
 
         TextView textView = findViewById(R.id.textView);
+        Button change_tooth_state_button = findViewById(R.id.change_btn);
+        change_tooth_state_button.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Выберите особенности зуба");
+            for (int i = 0; i < checked_state.length; ++i) {
+                if (tooth_list[clicked_tooth].state.contains(i)) checked_state[i] = true;
+                else checked_state[i] = false;
+            }
+            builder.setMultiChoiceItems(tooth_state_list, checked_state, (dialog, which, isChecked) -> {
+                if (isChecked) {
+                    if (!copylist_of_state.contains(which)) copylist_of_state.add(which);
+                }
+                else copylist_of_state.remove(Integer.valueOf(which));
+            });
+            builder.setCancelable(false);
+            builder.setPositiveButton("СОХРАНИТЬ", (dialog, which) -> {
+                tooth_list[clicked_tooth].state = new ArrayList<>(copylist_of_state);
+            });
+            builder.setNegativeButton("ОТМЕНИТЬ", (dialog, which) -> {
+                dialog.dismiss();
+            });
 
+            AlertDialog change_state_dialog = builder.create();
+            change_state_dialog.show();
+        });
         Button tooth_specialities_btn = findViewById(R.id.button9);
-        tooth_specialities_btn.setOnClickListener(v -> {
+        /*tooth_specialities_btn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ChangeActivity.class);
             startActivityForResult(intent, REQUEST_ACCESS_TYPE);
-        });
+        });*/
 
         for (int i = 0; i <= 31; ++i) {
             imageButtons_list[i] = findViewById(imageButtons_id[i]);
@@ -73,14 +103,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+    /*@Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
             TextView textView = findViewById(R.id.textView);
             boolean[] state_list = data.getBooleanArrayExtra("state_list");
-            tooth_list[clicked_tooth].state = state_list;
-            textView.setText(Arrays.toString(tooth_list[clicked_tooth].state));
-    }
+            // tooth_list[clicked_tooth].state = state_list;
+            // textView.setText(Arrays.toString(tooth_list[clicked_tooth].state));
+    }*/
 
 }
 
