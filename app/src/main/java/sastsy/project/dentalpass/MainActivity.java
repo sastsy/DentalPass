@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -60,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
         Button change_tooth_state_button = findViewById(R.id.change_btn);
         change_tooth_state_button.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setTitle("Выберите особенности зуба");
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialog);
+            builder.setTitle(tooth_list[clicked_tooth].name.toUpperCase());
             for (int i = 0; i < checked_state.length; ++i) {
                 if (tooth_list[clicked_tooth].state.contains(i)) checked_state[i] = true;
                 else checked_state[i] = false;
@@ -79,15 +80,10 @@ public class MainActivity extends AppCompatActivity {
             builder.setNegativeButton("ОТМЕНИТЬ", (dialog, which) -> {
                 dialog.dismiss();
             });
-
             AlertDialog change_state_dialog = builder.create();
             change_state_dialog.show();
         });
         Button tooth_specialities_btn = findViewById(R.id.button9);
-        /*tooth_specialities_btn.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ChangeActivity.class);
-            startActivityForResult(intent, REQUEST_ACCESS_TYPE);
-        });*/
 
         for (int i = 0; i <= 31; ++i) {
             imageButtons_list[i] = findViewById(imageButtons_id[i]);
