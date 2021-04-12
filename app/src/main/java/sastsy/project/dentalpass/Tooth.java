@@ -7,7 +7,7 @@ public class Tooth {
     public String name;
     public ArrayList<Integer> state;
     public int number;
-    public Event event;
+    public ArrayList<Event> event;
 
     String[] name_list = {"Третий моляр (зуб мудрости)", "Второй моляр", "Первый моляр", "Второй премоляр",
     "Первый премоляр", "Клык", "Боковой резец", "Центральный резец"};
@@ -24,9 +24,10 @@ public class Tooth {
         }
         this.number = number;
         this.state = new ArrayList<>();
+        this.event = new ArrayList<>();
     }
 
     public void addEvent(Event event) {
-        this.event = event;
+        this.event.add(event);
     }
 }

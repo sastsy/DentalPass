@@ -11,4 +11,8 @@
         <item>Виниры</item>
         <item>Брекеты</item>
     </string-array>
+    <string name="AlertDialogEvent">ДОБАВИТЬ СОБЫТИЕ</string>
+    <string name="placehint">МЕСТО</string>
+    <string name="doctorhint">ВРАЧ</string>
+    <string name="commenthint">КОММЕНТАРИЙ</string>
 </resources>

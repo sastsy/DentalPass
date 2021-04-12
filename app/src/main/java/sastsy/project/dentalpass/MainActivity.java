@@ -6,10 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.Layout;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dentalpass.R;
@@ -83,7 +88,34 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog change_state_dialog = builder.create();
             change_state_dialog.show();
         });
+
+        Button add_event_btn = findViewById(R.id.button10);
+        add_event_btn.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialog);
+            builder.setTitle(R.string.AlertDialogEvent);
+            View view = getLayoutInflater().inflate(R.layout.event_dialog, null);
+            CalendarView date = findViewById(R.id.date);
+            EditText place = findViewById(R.id.place);
+            EditText doctor = findViewById(R.id.doctor);
+            EditText comment = findViewById(R.id.comment);
+
+            builder.setCancelable(false);
+            builder.setPositiveButton("СОХРАНИТЬ", (dialog, which) -> {
+                Event event = new Event(String.valueOf(date.getDate()), place.getText().toString(), doctor.getText().toString(), comment.getText().toString());
+                tooth_list[clicked_tooth].addEvent(event);
+            });
+            builder.setNegativeButton("ОТМЕНИТЬ", (dialog, which) -> {
+                dialog.dismiss();
+            });
+
+            AlertDialog add_event_dialog = builder.create();
+            add_event_dialog.setView(view);
+            add_event_dialog.show();
+        });
         Button tooth_specialities_btn = findViewById(R.id.button9);
+        tooth_specialities_btn.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialog);
+        });
 
         for (int i = 0; i <= 31; ++i) {
             imageButtons_list[i] = findViewById(imageButtons_id[i]);
