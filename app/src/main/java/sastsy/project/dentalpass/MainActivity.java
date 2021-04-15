@@ -115,6 +115,15 @@ public class MainActivity extends AppCompatActivity {
         Button tooth_specialities_btn = findViewById(R.id.button9);
         tooth_specialities_btn.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.AlertDialog);
+            builder.setTitle(tooth_list[clicked_tooth].name.toUpperCase());
+            builder.setCancelable(true);
+            StringBuilder state_string = new StringBuilder();
+            for (int i = 0; i < tooth_state_list.length; ++i) {
+                if (tooth_list[clicked_tooth].state.contains(i)) state_string.append(tooth_state_list[i].toUpperCase()).append(" ");
+            }
+            builder.setMessage(state_string);
+            AlertDialog show_current_state_dialog = builder.create();
+            show_current_state_dialog.show();
         });
 
         for (int i = 0; i <= 31; ++i) {
